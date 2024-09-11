@@ -16,7 +16,7 @@
 # limitations under the License.
 
 from typing import TYPE_CHECKING, List, Optional
-
+import os 
 from ...data import SFTDataCollatorWith4DAttentionMask, get_dataset, get_template_and_fix_tokenizer
 from ...extras.constants import IGNORE_INDEX
 from ...extras.misc import get_logits_processor
@@ -93,6 +93,13 @@ def run_sft(
 
     # Training
     if training_args.do_train:
+        if training_args.resume_from_checkpoint:
+            if os.path.exists(training_args.output_dir):
+                if not any(os.path.isdir(os.path.join(training_args.output_dir, f)) and f.startswith("checkpoint") for f in os.listdir(training_args.output_dir)):
+                    training_args.resume_from_checkpoint=False
+            else:
+                training_args.resume_from_checkpoint=False
+        print(training_args.resume_from_checkpoint)
         train_result = trainer.train(resume_from_checkpoint=training_args.resume_from_checkpoint)
         trainer.save_model()
         trainer.log_metrics("train", train_result.metrics)

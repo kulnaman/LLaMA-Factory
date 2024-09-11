@@ -14,7 +14,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
+import time
 import json
 import os
 from types import MethodType
@@ -118,6 +118,14 @@ class CustomSeq2SeqTrainer(Seq2SeqTrainer):
         padded_tensor = self.tokenizer.pad_token_id * torch.ones_like(tgt_tensor)
         padded_tensor[:, -src_tensor.shape[-1] :] = src_tensor  # adopt left-padding
         return padded_tensor.contiguous()  # in contiguous memory
+
+
+    def save_model(self,output_dir: Optional=None,_internal_call:bool=False):
+        start_time=time.time()
+        super().save_model(output_dir,_internal_call)
+        end_time=time.time()
+        print(f"checkpointing time {end_time-start_time}")
+
 
     def save_predictions(self, dataset: "Dataset", predict_results: "PredictionOutput") -> None:
         r"""
