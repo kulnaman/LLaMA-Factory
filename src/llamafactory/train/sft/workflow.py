@@ -20,18 +20,21 @@ import os
 from ...data import SFTDataCollatorWith4DAttentionMask, get_dataset, get_template_and_fix_tokenizer
 from ...extras.constants import IGNORE_INDEX
 from ...extras.misc import get_logits_processor
+from ...extras.logging import get_logger
 from ...extras.ploting import plot_loss
 from ...model import load_model, load_tokenizer
 from ..trainer_utils import create_modelcard_and_push
 from .metric import ComputeAccuracy, ComputeSimilarity, eval_logit_processor
 from .trainer import CustomSeq2SeqTrainer
-
+import time
 
 if TYPE_CHECKING:
     from transformers import Seq2SeqTrainingArguments, TrainerCallback
 
     from ...hparams import DataArguments, FinetuningArguments, GeneratingArguments, ModelArguments
 
+
+logger = get_logger(__name__)
 
 def run_sft(
     model_args: "ModelArguments",
@@ -41,6 +44,7 @@ def run_sft(
     generating_args: "GeneratingArguments",
     callbacks: Optional[List["TrainerCallback"]] = None,
 ):
+    start_time=time.time()
     tokenizer_module = load_tokenizer(model_args)
     tokenizer = tokenizer_module["tokenizer"]
     template = get_template_and_fix_tokenizer(tokenizer, data_args)
@@ -90,7 +94,9 @@ def run_sft(
     gen_kwargs["eos_token_id"] = [tokenizer.eos_token_id] + tokenizer.additional_special_tokens_ids
     gen_kwargs["pad_token_id"] = tokenizer.pad_token_id
     gen_kwargs["logits_processor"] = get_logits_processor()
-
+    end_time=time.time()
+    print(f"setup time {end_time-start_time}")
+    logger.info(f"Setup time {end_time-start_time}")
     # Training
     if training_args.do_train:
         if training_args.resume_from_checkpoint:
@@ -99,7 +105,7 @@ def run_sft(
                     training_args.resume_from_checkpoint=False
             else:
                 training_args.resume_from_checkpoint=False
-        print(training_args.resume_from_checkpoint)
+    
         train_result = trainer.train(resume_from_checkpoint=training_args.resume_from_checkpoint)
         trainer.save_model()
         trainer.log_metrics("train", train_result.metrics)

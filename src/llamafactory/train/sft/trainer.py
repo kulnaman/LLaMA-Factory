@@ -125,6 +125,7 @@ class CustomSeq2SeqTrainer(Seq2SeqTrainer):
         super().save_model(output_dir,_internal_call)
         end_time=time.time()
         print(f"checkpointing time {end_time-start_time}")
+        logger.info(f"checkpointing time {end_time-start_time}")
 
 
     def save_predictions(self, dataset: "Dataset", predict_results: "PredictionOutput") -> None:
