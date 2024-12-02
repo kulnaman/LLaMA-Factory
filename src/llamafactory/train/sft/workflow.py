@@ -48,8 +48,13 @@ def run_sft(
     tokenizer_module = load_tokenizer(model_args)
     tokenizer = tokenizer_module["tokenizer"]
     template = get_template_and_fix_tokenizer(tokenizer, data_args)
+    data_set_load_start=time.time()
     dataset_module = get_dataset(template, model_args, data_args, training_args, stage="sft", **tokenizer_module)
+    data_set_load_end=time.time()
+    model_load_time_start=time.time()
     model = load_model(tokenizer, model_args, finetuning_args, training_args.do_train)
+
+    model_load_time_end=time.time()
 
     if getattr(model, "is_quantized", False) and not training_args.do_train:
         setattr(model, "_hf_peft_config_loaded", True)  # hack here: make model compatible with prediction
@@ -88,7 +93,6 @@ def run_sft(
         **tokenizer_module,
         **metric_module,
     )
-
     # Keyword arguments for `model.generate`
     gen_kwargs = generating_args.to_dict()
     gen_kwargs["eos_token_id"] = [tokenizer.eos_token_id] + tokenizer.additional_special_tokens_ids
@@ -96,7 +100,16 @@ def run_sft(
     gen_kwargs["logits_processor"] = get_logits_processor()
     end_time=time.time()
     print(f"setup time {end_time-start_time}")
-    logger.info(f"Setup time {end_time-start_time}")
+    setup_time=end_time-start_time
+    model_load_time=model_load_time_end-model_load_time_start
+    data_set_load_time=data_set_load_end-data_set_load_start
+    
+    logger.info(f"Dataset time {data_set_load_time}")
+    trainer.log_metrics("init",{"dataset_time":data_set_load_time})
+    trainer.save_metrics("init",{"dataset_time":data_set_load_time})
+    logger.info(f"model load time {model_load_time}")
+    trainer.log_metrics("init",{"model_load_time":model_load_time})
+    trainer.save_metrics("init",{"model_load_time":model_load_time})
     # Training
     if training_args.do_train:
         if training_args.resume_from_checkpoint:

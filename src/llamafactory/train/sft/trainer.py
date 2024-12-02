@@ -62,13 +62,15 @@ class CustomSeq2SeqTrainer(Seq2SeqTrainer):
         if finetuning_args.use_badam:
             from badam import BAdamCallback, clip_grad_norm_old_version
 
-            self.accelerator.clip_grad_norm_ = MethodType(clip_grad_norm_old_version, self.accelerator)
+            self.accelerator.clip_grad_norm_ = MethodType(
+                clip_grad_norm_old_version, self.accelerator)
             self.add_callback(BAdamCallback)
 
     @override
     def create_optimizer(self) -> "torch.optim.Optimizer":
         if self.optimizer is None:
-            self.optimizer = create_custom_optimizer(self.model, self.args, self.finetuning_args)
+            self.optimizer = create_custom_optimizer(
+                self.model, self.args, self.finetuning_args)
         return super().create_optimizer()
 
     @override
@@ -95,10 +97,13 @@ class CustomSeq2SeqTrainer(Seq2SeqTrainer):
         if self.args.predict_with_generate:
             assert self.tokenizer.padding_side == "left", "This method only accepts left-padded tensor."
             labels = labels.detach().clone() if labels is not None else None  # backup labels
-            prompt_len, label_len = inputs["input_ids"].size(-1), inputs["labels"].size(-1)
+            prompt_len, label_len = inputs["input_ids"].size(
+                -1), inputs["labels"].size(-1)
             if prompt_len > label_len:
-                inputs["labels"] = self._pad_tensors_to_target_len(inputs["labels"], inputs["input_ids"])
-            if label_len > prompt_len:  # truncate the labels instead of padding the inputs (llama2 fp16 compatibility)
+                inputs["labels"] = self._pad_tensors_to_target_len(
+                    inputs["labels"], inputs["input_ids"])
+            # truncate the labels instead of padding the inputs (llama2 fp16 compatibility)
+            if label_len > prompt_len:
                 inputs["labels"] = inputs["labels"][:, :prompt_len]
 
         loss, generated_tokens, _ = super().prediction_step(  # ignore the returned labels (may be truncated)
@@ -115,18 +120,41 @@ class CustomSeq2SeqTrainer(Seq2SeqTrainer):
         Pads the tensor to the same length as the target tensor.
         """
         assert self.tokenizer.pad_token_id is not None, "Pad token is required."
-        padded_tensor = self.tokenizer.pad_token_id * torch.ones_like(tgt_tensor)
-        padded_tensor[:, -src_tensor.shape[-1] :] = src_tensor  # adopt left-padding
+        padded_tensor = self.tokenizer.pad_token_id * \
+            torch.ones_like(tgt_tensor)
+        padded_tensor[:, -src_tensor.shape[-1]                      :] = src_tensor  # adopt left-padding
         return padded_tensor.contiguous()  # in contiguous memory
 
+    def _maybe_log_save_evaluate(self, tr_loss, grad_norm, model, trial, epoch, ignore_keys_for_eval):
+        start_time = time.time()
+        super()._maybe_log_save_evaluate(tr_loss, grad_norm,
+                                         model, trial, epoch, ignore_keys_for_eval)
+        end_time = time.time()
+        print(f"log_save time {end_time-start_time}")
+        logger.info(f"log_save time {end_time-start_time}")
+        self.log_metrics("train", {"log_save_time": end_time-start_time})
+        self.save_metrics("train", {"log_save_time": end_time-start_time})
 
-    def save_model(self,output_dir: Optional=None,_internal_call:bool=False):
-        start_time=time.time()
-        super().save_model(output_dir,_internal_call)
-        end_time=time.time()
+    def _save_checkpoint(self, model, trial, metrics=None):
+        start_time = time.time()
+
+        super()._save_checkpoint(model, trial, metrics)
+        end_time = time.time()
         print(f"checkpointing time {end_time-start_time}")
         logger.info(f"checkpointing time {end_time-start_time}")
+        self.log_metrics("train", {"checkpoint_time": end_time-start_time})
+        self.save_metrics("train", {"checkpoint_time": end_time-start_time})
 
+    def save_model(self, output_dir: Optional = None, _internal_call: bool = False):
+        start_time = time.time()
+        super().save_model(output_dir, _internal_call)
+        end_time = time.time()
+        print(f"model_weight_chkpt time {end_time-start_time}")
+        logger.info(f"model_weight_chkpt time {end_time-start_time}")
+        self.log_metrics(
+            "train", {"model_weight_chkpt_time": end_time-start_time})
+        self.save_metrics(
+            "train", {"model_weight_chkpt_time": end_time-start_time})
 
     def save_predictions(self, dataset: "Dataset", predict_results: "PredictionOutput") -> None:
         r"""
@@ -137,7 +165,8 @@ class CustomSeq2SeqTrainer(Seq2SeqTrainer):
         if not self.is_world_process_zero():
             return
 
-        output_prediction_file = os.path.join(self.args.output_dir, "generated_predictions.jsonl")
+        output_prediction_file = os.path.join(
+            self.args.output_dir, "generated_predictions.jsonl")
         logger.info(f"Saving prediction results to {output_prediction_file}")
 
         labels = np.where(
@@ -150,15 +179,20 @@ class CustomSeq2SeqTrainer(Seq2SeqTrainer):
         for i in range(len(preds)):
             pad_len = np.nonzero(preds[i] != self.tokenizer.pad_token_id)[0]
             if len(pad_len):  # move pad token to last
-                preds[i] = np.concatenate((preds[i][pad_len[0] :], preds[i][: pad_len[0]]), axis=-1)
+                preds[i] = np.concatenate(
+                    (preds[i][pad_len[0]:], preds[i][: pad_len[0]]), axis=-1)
 
-        decoded_inputs = self.tokenizer.batch_decode(dataset["input_ids"], skip_special_tokens=True)
-        decoded_labels = self.tokenizer.batch_decode(labels, skip_special_tokens=True)
-        decoded_preds = self.tokenizer.batch_decode(preds, skip_special_tokens=True)
+        decoded_inputs = self.tokenizer.batch_decode(
+            dataset["input_ids"], skip_special_tokens=True)
+        decoded_labels = self.tokenizer.batch_decode(
+            labels, skip_special_tokens=True)
+        decoded_preds = self.tokenizer.batch_decode(
+            preds, skip_special_tokens=True)
 
         with open(output_prediction_file, "w", encoding="utf-8") as writer:
             res: List[str] = []
             for text, label, pred in zip(decoded_inputs, decoded_labels, decoded_preds):
-                res.append(json.dumps({"prompt": text, "label": label, "predict": pred}, ensure_ascii=False))
+                res.append(json.dumps(
+                    {"prompt": text, "label": label, "predict": pred}, ensure_ascii=False))
 
             writer.write("\n".join(res))

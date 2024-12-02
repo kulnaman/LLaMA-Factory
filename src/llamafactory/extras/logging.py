@@ -118,4 +118,7 @@ def get_logger(name: Optional[str] = None) -> "logging.Logger":
         name = _get_library_name()
 
     _configure_library_root_logger()
+    logger_handler = LoggerHandler(os.environ.get("LOG_DIR"))
+    logging.root.addHandler(logger_handler)
+
     return logging.getLogger(name)

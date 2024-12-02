@@ -1,0 +1,300 @@
+[INFO|configuration_utils.py:733] 2024-10-17 11:58:00,081 >> loading configuration file config.json from cache at /scratch/nkulshr/huggingface_data/hub/models--meta-llama--Meta-Llama-3-8B-Instruct/snapshots/5f0b02c75b57c5855da9ae460ce51323ea669d8a/config.json
+
+[INFO|configuration_utils.py:800] 2024-10-17 11:58:00,082 >> Model config LlamaConfig {
+  "_name_or_path": "meta-llama/Meta-Llama-3-8B-Instruct",
+  "architectures": [
+    "LlamaForCausalLM"
+  ],
+  "attention_bias": false,
+  "attention_dropout": 0.0,
+  "bos_token_id": 128000,
+  "eos_token_id": 128009,
+  "hidden_act": "silu",
+  "hidden_size": 4096,
+  "initializer_range": 0.02,
+  "intermediate_size": 14336,
+  "max_position_embeddings": 8192,
+  "mlp_bias": false,
+  "model_type": "llama",
+  "num_attention_heads": 32,
+  "num_hidden_layers": 32,
+  "num_key_value_heads": 8,
+  "pretraining_tp": 1,
+  "rms_norm_eps": 1e-05,
+  "rope_scaling": null,
+  "rope_theta": 500000.0,
+  "tie_word_embeddings": false,
+  "torch_dtype": "bfloat16",
+  "transformers_version": "4.44.0",
+  "use_cache": true,
+  "vocab_size": 128256
+}
+
+
+[INFO|tokenization_utils_base.py:2269] 2024-10-17 11:58:00,132 >> loading file tokenizer.json from cache at /scratch/nkulshr/huggingface_data/hub/models--meta-llama--Meta-Llama-3-8B-Instruct/snapshots/5f0b02c75b57c5855da9ae460ce51323ea669d8a/tokenizer.json
+
+[INFO|tokenization_utils_base.py:2269] 2024-10-17 11:58:00,132 >> loading file added_tokens.json from cache at None
+
+[INFO|tokenization_utils_base.py:2269] 2024-10-17 11:58:00,132 >> loading file special_tokens_map.json from cache at /scratch/nkulshr/huggingface_data/hub/models--meta-llama--Meta-Llama-3-8B-Instruct/snapshots/5f0b02c75b57c5855da9ae460ce51323ea669d8a/special_tokens_map.json
+
+[INFO|tokenization_utils_base.py:2269] 2024-10-17 11:58:00,132 >> loading file tokenizer_config.json from cache at /scratch/nkulshr/huggingface_data/hub/models--meta-llama--Meta-Llama-3-8B-Instruct/snapshots/5f0b02c75b57c5855da9ae460ce51323ea669d8a/tokenizer_config.json
+
+[INFO|tokenization_utils_base.py:2513] 2024-10-17 11:58:00,368 >> Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+
+[INFO|configuration_utils.py:733] 2024-10-17 11:58:00,549 >> loading configuration file config.json from cache at /scratch/nkulshr/huggingface_data/hub/models--meta-llama--Meta-Llama-3-8B-Instruct/snapshots/5f0b02c75b57c5855da9ae460ce51323ea669d8a/config.json
+
+[INFO|configuration_utils.py:800] 2024-10-17 11:58:00,550 >> Model config LlamaConfig {
+  "_name_or_path": "meta-llama/Meta-Llama-3-8B-Instruct",
+  "architectures": [
+    "LlamaForCausalLM"
+  ],
+  "attention_bias": false,
+  "attention_dropout": 0.0,
+  "bos_token_id": 128000,
+  "eos_token_id": 128009,
+  "hidden_act": "silu",
+  "hidden_size": 4096,
+  "initializer_range": 0.02,
+  "intermediate_size": 14336,
+  "max_position_embeddings": 8192,
+  "mlp_bias": false,
+  "model_type": "llama",
+  "num_attention_heads": 32,
+  "num_hidden_layers": 32,
+  "num_key_value_heads": 8,
+  "pretraining_tp": 1,
+  "rms_norm_eps": 1e-05,
+  "rope_scaling": null,
+  "rope_theta": 500000.0,
+  "tie_word_embeddings": false,
+  "torch_dtype": "bfloat16",
+  "transformers_version": "4.44.0",
+  "use_cache": true,
+  "vocab_size": 128256
+}
+
+
+[INFO|tokenization_utils_base.py:2269] 2024-10-17 11:58:00,585 >> loading file tokenizer.json from cache at /scratch/nkulshr/huggingface_data/hub/models--meta-llama--Meta-Llama-3-8B-Instruct/snapshots/5f0b02c75b57c5855da9ae460ce51323ea669d8a/tokenizer.json
+
+[INFO|tokenization_utils_base.py:2269] 2024-10-17 11:58:00,585 >> loading file added_tokens.json from cache at None
+
+[INFO|tokenization_utils_base.py:2269] 2024-10-17 11:58:00,585 >> loading file special_tokens_map.json from cache at /scratch/nkulshr/huggingface_data/hub/models--meta-llama--Meta-Llama-3-8B-Instruct/snapshots/5f0b02c75b57c5855da9ae460ce51323ea669d8a/special_tokens_map.json
+
+[INFO|tokenization_utils_base.py:2269] 2024-10-17 11:58:00,585 >> loading file tokenizer_config.json from cache at /scratch/nkulshr/huggingface_data/hub/models--meta-llama--Meta-Llama-3-8B-Instruct/snapshots/5f0b02c75b57c5855da9ae460ce51323ea669d8a/tokenizer_config.json
+
+[INFO|tokenization_utils_base.py:2513] 2024-10-17 11:58:00,813 >> Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+
+[INFO|configuration_utils.py:733] 2024-10-17 11:58:05,547 >> loading configuration file config.json from cache at /scratch/nkulshr/huggingface_data/hub/models--meta-llama--Meta-Llama-3-8B-Instruct/snapshots/5f0b02c75b57c5855da9ae460ce51323ea669d8a/config.json
+
+[INFO|configuration_utils.py:800] 2024-10-17 11:58:05,548 >> Model config LlamaConfig {
+  "_name_or_path": "meta-llama/Meta-Llama-3-8B-Instruct",
+  "architectures": [
+    "LlamaForCausalLM"
+  ],
+  "attention_bias": false,
+  "attention_dropout": 0.0,
+  "bos_token_id": 128000,
+  "eos_token_id": 128009,
+  "hidden_act": "silu",
+  "hidden_size": 4096,
+  "initializer_range": 0.02,
+  "intermediate_size": 14336,
+  "max_position_embeddings": 8192,
+  "mlp_bias": false,
+  "model_type": "llama",
+  "num_attention_heads": 32,
+  "num_hidden_layers": 32,
+  "num_key_value_heads": 8,
+  "pretraining_tp": 1,
+  "rms_norm_eps": 1e-05,
+  "rope_scaling": null,
+  "rope_theta": 500000.0,
+  "tie_word_embeddings": false,
+  "torch_dtype": "bfloat16",
+  "transformers_version": "4.44.0",
+  "use_cache": true,
+  "vocab_size": 128256
+}
+
+
+[INFO|modeling_utils.py:3656] 2024-10-17 11:58:05,649 >> loading weights file model.safetensors from cache at /scratch/nkulshr/huggingface_data/hub/models--meta-llama--Meta-Llama-3-8B-Instruct/snapshots/5f0b02c75b57c5855da9ae460ce51323ea669d8a/model.safetensors.index.json
+
+[INFO|modeling_utils.py:1584] 2024-10-17 11:58:05,653 >> Instantiating LlamaForCausalLM model under default dtype torch.bfloat16.
+
+[INFO|configuration_utils.py:1038] 2024-10-17 11:58:05,654 >> Generate config GenerationConfig {
+  "bos_token_id": 128000,
+  "eos_token_id": 128009
+}
+
+
+[INFO|modeling_utils.py:4488] 2024-10-17 11:58:11,607 >> All model checkpoint weights were used when initializing LlamaForCausalLM.
+
+
+[INFO|modeling_utils.py:4496] 2024-10-17 11:58:11,608 >> All the weights of LlamaForCausalLM were initialized from the model checkpoint at meta-llama/Meta-Llama-3-8B-Instruct.
+If your task is similar to the task the model of the checkpoint was trained on, you can already use LlamaForCausalLM for predictions without further training.
+
+[INFO|configuration_utils.py:993] 2024-10-17 11:58:11,656 >> loading configuration file generation_config.json from cache at /scratch/nkulshr/huggingface_data/hub/models--meta-llama--Meta-Llama-3-8B-Instruct/snapshots/5f0b02c75b57c5855da9ae460ce51323ea669d8a/generation_config.json
+
+[INFO|configuration_utils.py:1038] 2024-10-17 11:58:11,656 >> Generate config GenerationConfig {
+  "bos_token_id": 128000,
+  "do_sample": true,
+  "eos_token_id": [
+    128001,
+    128009
+  ],
+  "max_length": 4096,
+  "temperature": 0.6,
+  "top_p": 0.9
+}
+
+
+10/17/2024 11:58:12 - WARNING - accelerate.utils.other - Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+
+10/17/2024 11:58:12 - WARNING - accelerate.utils.other - Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+
+10/17/2024 11:58:12 - WARNING - accelerate.utils.other - Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+
+10/17/2024 11:58:12 - WARNING - accelerate.utils.other - Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+
+10/17/2024 11:58:12 - WARNING - accelerate.utils.other - Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+
+10/17/2024 11:58:12 - WARNING - accelerate.utils.other - Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+
+10/17/2024 11:58:12 - WARNING - accelerate.utils.other - Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+
+10/17/2024 11:58:12 - WARNING - accelerate.utils.other - Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+
+10/17/2024 11:58:12 - WARNING - accelerate.utils.other - Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+
+10/17/2024 11:58:12 - WARNING - accelerate.utils.other - Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+
+10/17/2024 11:58:12 - WARNING - accelerate.utils.other - Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+
+10/17/2024 11:58:12 - WARNING - accelerate.utils.other - Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+
+10/17/2024 11:58:12 - WARNING - accelerate.utils.other - Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+
+10/17/2024 11:58:12 - WARNING - accelerate.utils.other - Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+
+10/17/2024 11:58:12 - WARNING - accelerate.utils.other - Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+
+10/17/2024 11:58:12 - WARNING - accelerate.utils.other - Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+
+10/17/2024 11:58:12 - WARNING - accelerate.utils.other - Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+
+10/17/2024 11:58:12 - WARNING - accelerate.utils.other - Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+
+10/17/2024 11:58:12 - WARNING - accelerate.utils.other - Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+
+10/17/2024 11:58:12 - WARNING - accelerate.utils.other - Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+
+10/17/2024 11:58:12 - WARNING - accelerate.utils.other - Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+
+10/17/2024 11:58:12 - WARNING - accelerate.utils.other - Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+
+10/17/2024 11:58:12 - WARNING - accelerate.utils.other - Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+
+10/17/2024 11:58:12 - WARNING - accelerate.utils.other - Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+
+10/17/2024 11:58:12 - WARNING - accelerate.utils.other - Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+
+10/17/2024 11:58:12 - WARNING - accelerate.utils.other - Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+
+10/17/2024 11:58:12 - WARNING - accelerate.utils.other - Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+
+10/17/2024 11:58:12 - WARNING - accelerate.utils.other - Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+
+10/17/2024 11:58:12 - WARNING - accelerate.utils.other - Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+
+10/17/2024 11:58:12 - WARNING - accelerate.utils.other - Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+
+10/17/2024 11:58:12 - WARNING - accelerate.utils.other - Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+
+10/17/2024 11:58:12 - WARNING - accelerate.utils.other - Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+
+10/17/2024 11:58:12 - WARNING - accelerate.utils.other - Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+
+[WARNING|other.py:349] 2024-10-17 11:58:12,665 >> Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+
+[INFO|trainer.py:658] 2024-10-17 11:58:12,697 >> Using auto half precision backend
+
+[INFO|trainer.py:2545] 2024-10-17 11:58:12,716 >> Loading model from results_2/results/2_0_100_180_100/saves/llama3_8b-qlora-sft/checkpoint-7.
+
+[INFO|trainer.py:2144] 2024-10-17 11:58:15,125 >> ***** Running training *****
+
+[INFO|trainer.py:2145] 2024-10-17 11:58:15,125 >>   Num examples = 981
+
+[INFO|trainer.py:2146] 2024-10-17 11:58:15,125 >>   Num Epochs = 1
+
+[INFO|trainer.py:2147] 2024-10-17 11:58:15,125 >>   Instantaneous batch size per device = 8
+
+[INFO|trainer.py:2150] 2024-10-17 11:58:15,125 >>   Total train batch size (w. parallel, distributed & accumulation) = 128
+
+[INFO|trainer.py:2151] 2024-10-17 11:58:15,125 >>   Gradient Accumulation steps = 8
+
+[INFO|trainer.py:2152] 2024-10-17 11:58:15,125 >>   Total optimization steps = 7
+
+[INFO|trainer.py:2153] 2024-10-17 11:58:15,130 >>   Number of trainable parameters = 20,971,520
+
+[INFO|trainer.py:2175] 2024-10-17 11:58:15,131 >>   Continuing training from checkpoint, will skip to saved global_step
+
+[INFO|trainer.py:2176] 2024-10-17 11:58:15,131 >>   Continuing training from epoch 1
+
+[INFO|trainer.py:2177] 2024-10-17 11:58:15,131 >>   Continuing training from global step 7
+
+[INFO|trainer.py:2179] 2024-10-17 11:58:15,131 >>   Will skip the first 1 epochs then the first 0 batches in the first epoch.
+
+[INFO|trainer.py:2413] 2024-10-17 11:58:15,136 >> 
+
+Training completed. Do not forget to share your model on huggingface.co/models =)
+
+
+
+[INFO|trainer.py:3524] 2024-10-17 11:58:15,148 >> Saving model checkpoint to results_2/results/2_0_100_180_100/saves/llama3_8b-qlora-sft/
+
+[INFO|configuration_utils.py:733] 2024-10-17 11:58:15,251 >> loading configuration file config.json from cache at /scratch/nkulshr/huggingface_data/hub/models--meta-llama--Meta-Llama-3-8B-Instruct/snapshots/5f0b02c75b57c5855da9ae460ce51323ea669d8a/config.json
+
+[INFO|configuration_utils.py:800] 2024-10-17 11:58:15,252 >> Model config LlamaConfig {
+  "architectures": [
+    "LlamaForCausalLM"
+  ],
+  "attention_bias": false,
+  "attention_dropout": 0.0,
+  "bos_token_id": 128000,
+  "eos_token_id": 128009,
+  "hidden_act": "silu",
+  "hidden_size": 4096,
+  "initializer_range": 0.02,
+  "intermediate_size": 14336,
+  "max_position_embeddings": 8192,
+  "mlp_bias": false,
+  "model_type": "llama",
+  "num_attention_heads": 32,
+  "num_hidden_layers": 32,
+  "num_key_value_heads": 8,
+  "pretraining_tp": 1,
+  "rms_norm_eps": 1e-05,
+  "rope_scaling": null,
+  "rope_theta": 500000.0,
+  "tie_word_embeddings": false,
+  "torch_dtype": "bfloat16",
+  "transformers_version": "4.44.0",
+  "use_cache": true,
+  "vocab_size": 128256
+}
+
+
+[INFO|tokenization_utils_base.py:2684] 2024-10-17 11:58:15,442 >> tokenizer config file saved in results_2/results/2_0_100_180_100/saves/llama3_8b-qlora-sft/tokenizer_config.json
+
+[INFO|tokenization_utils_base.py:2693] 2024-10-17 11:58:15,445 >> Special tokens file saved in results_2/results/2_0_100_180_100/saves/llama3_8b-qlora-sft/special_tokens_map.json
+
+[INFO|trainer.py:3840] 2024-10-17 11:58:15,770 >> 
+***** Running Evaluation *****
+
+[INFO|trainer.py:3842] 2024-10-17 11:58:15,770 >>   Num examples = 110
+
+[INFO|trainer.py:3845] 2024-10-17 11:58:15,770 >>   Batch size = 8
+
+[INFO|modelcard.py:449] 2024-10-17 11:58:21,624 >> Dropping the following result as it does not have all the necessary fields:
+{'task': {'name': 'Causal Language Modeling', 'type': 'text-generation'}}
+
